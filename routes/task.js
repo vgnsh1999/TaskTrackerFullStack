@@ -8,13 +8,13 @@ const taskController = require("../controllers/taskcontrollers");
 router.post(
   "/add-task",
   userauthentication.authenticate,
-  expenseController.addTask
+  taskController.addTask
 );
 
 router.get(
   "/get-task",
   userauthentication.authenticate,
-  expenseController.getTask
+  taskController.getTask
 );
 
 // router.get('/get-expense/page2', userauthentication.authenticate, expenseController.getExpenseOnPage2);
@@ -22,7 +22,7 @@ router.get(
 router.delete(
   "/delete-task/:id",
   userauthentication.authenticate,
-  expenseController.deleteTask
+  taskController.deleteTask
 );
 
 module.exports = router;

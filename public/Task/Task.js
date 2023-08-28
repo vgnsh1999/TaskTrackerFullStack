@@ -19,8 +19,8 @@ async function addTask(event){
     function showTaskOnScreen(obj){
         const parentElement = document.getElementById('taskTable');
         const childElement = `<tr id=${obj._id}><td>${obj.title}</td><td>${obj.description}</td><td>${obj.date}</td><td>${obj.priority}</td><td>${obj.status}</td>
-            <td><button class="btn btn-primary" onclick="editExpense('${obj._id}','${obj.amount}','${obj.description}','${obj.date}','${obj.priority}','${obj.status}')">Edit Task
-                <button class="btn btn-danger" onclick="deleteExpense('${obj._id}')">Delete Task
+            <td><button class="btn btn-primary" onclick="editTask('${obj._id}','${obj.title}','${obj.description}','${obj.date}','${obj.priority}','${obj.status}')">Edit Task
+                <button class="btn btn-danger" onclick="deleteTask('${obj._id}')">Delete Task
             </td></tr>`
         parentElement.innerHTML = parentElement.innerHTML + childElement;        
     }
@@ -54,7 +54,7 @@ async function addTask(event){
     window.addEventListener("DOMContentLoaded",async ()=>{
         try{
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:3000/expense/get-task',{headers:{"Authorization":token}});
+            const response = await axios.get('http://localhost:3000/task/get-task',{headers:{"Authorization":token}});
             for(var i=0;i<response.data.allTasks.length;i++){
                 showTaskOnScreen(response.data.allTasks[i]);
             }

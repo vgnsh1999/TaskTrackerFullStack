@@ -8,18 +8,9 @@ async function login(event){
         const response = await axios.post('http://localhost:3000/user/login',obj);
         alert(response.data.message);
         localStorage.setItem('token',response.data.token);
-        window.location.href = "../Expense/expense.html";
+        window.location.href = "../Task/task.html";
     } catch(error){
         console.log(JSON.stringify(error));
-        document.body.innerHTML = document.body.innerHTML + `<div style="color:red">${error.message}</div>`
-    }
-}
-
-document.getElementById('forgot').onclick = async ()=>{
-    try{
-        window.location.href = "../Forgot/forgot.html"
-    }catch(error){
-        console.log(error);
         document.body.innerHTML = document.body.innerHTML + `<div style="color:red">${error.message}</div>`
     }
 }

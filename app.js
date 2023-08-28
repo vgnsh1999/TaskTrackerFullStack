@@ -1,19 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const helmet = require("helmet");
-const morgan = require("morgan");
 require("dotenv").config();
 
 const cors = require("cors");
 const app = express();
-app.use(helmet({ contentSecurityPolicy: false }));
-app.use(morgan("combined", { stream: accessLogStream }));
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
 const userRoutes = require("./routes/user");
-const expenseRoutes = require("./routes/task");
+const taskRoutes = require("./routes/task");
 
 
 app.use("/user", userRoutes);
