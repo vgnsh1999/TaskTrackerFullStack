@@ -28,7 +28,12 @@ const addTask = async (req, res, next) => {
 
 const getTask = async (req, res, next) => {
   try {
-    const tasks = await Task.find({ userId: req.user._id });
+    // const tasks = await Task.find({ userId: req.user._id });
+    const tasks = await Task.find({ userId: req.user._id }).sort({
+      priority: "desc",
+      date: "asc",
+    });
+
     res.status(200).json({ allTasks: tasks, success: true });
   } catch (error) {
     console.log(JSON.stringify(error));

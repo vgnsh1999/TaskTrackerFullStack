@@ -11,15 +11,11 @@ app.use(bodyParser.json({ extended: false }));
 const userRoutes = require("./routes/user");
 const taskRoutes = require("./routes/task");
 
-
 app.use("/user", userRoutes);
 app.use("/task", taskRoutes);
 
-
 mongoose
-  .connect(
-    "mongodb+srv://vigneshvaradhank:vigneshvaradhank123@cluster0.b2seyrm.mongodb.net/tasktracker"
-  )
+  .connect(process.env.DB_CONNECT)
   .then((result) => {
     app.listen(3000);
   })

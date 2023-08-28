@@ -17,8 +17,6 @@ router.get(
   taskController.getTask
 );
 
-// router.get('/get-expense/page2', userauthentication.authenticate, expenseController.getExpenseOnPage2);
-
 router.delete(
   "/delete-task/:id",
   userauthentication.authenticate,
